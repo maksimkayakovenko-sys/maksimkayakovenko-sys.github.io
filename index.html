@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>АвтоСервисы Воронежа — каталог СТО</title>
-  <meta name="description" content="Каталог автосервисов Воронежа: адреса, телефоны, цены, отзывы. Найдите СТО по району, марке авто и типу ремонта.">
+  <meta name="description" content="Каталог автосервисов Воронежа: адреса, телефоны, цены, отзывы.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -29,7 +29,7 @@
       --success: #16a34a;
       --success-bg: #f0fdf4;
 
-      --font: 'Inter', -apple-system, sans-serif;
+      --font: 'Montserrat', -apple-system, sans-serif;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -79,7 +79,6 @@
       justify-content: center;
       font-weight: 800;
       font-size: 0.9rem;
-      letter-spacing: -0.5px;
       flex-shrink: 0;
     }
     .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
@@ -94,7 +93,6 @@
       font-weight: 500;
       padding: 8px 12px;
       transition: all 0.15s;
-      border: 1px solid transparent;
     }
     .nav-link:hover { color: var(--text); }
     .nav-link.accent {
@@ -297,37 +295,32 @@
     .sto-gallery {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
-      gap: 2px;
+      gap: 8px;
       height: 200px;
-      background: var(--border);
+      padding: 10px;
+      background: var(--surface);
       position: relative;
     }
     .sto-photo {
       background: var(--surface-2);
+      border: 1.5px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       overflow: hidden;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: all 0.2s;
     }
-    .sto-photo:hover { background: #f0f0f3; }
-
-    /* Тонкий паттерн для «фото» */
-    .sto-photo::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        repeating-linear-gradient(45deg, transparent 0, transparent 12px, rgba(0,0,0,0.02) 12px, rgba(0,0,0,0.02) 13px);
-      pointer-events: none;
+    .sto-photo:hover {
+      background: #f0f0f3;
+      border-color: var(--accent);
     }
 
     .sto-photo-num {
       font-size: 2rem;
       font-weight: 800;
-      color: #d4d4d8;
+      color: #c4c4c9;
       letter-spacing: -1px;
       position: relative;
       z-index: 1;
@@ -338,14 +331,14 @@
 
     .sto-badge {
       position: absolute;
-      top: 10px;
-      left: 10px;
+      top: 18px;
+      left: 18px;
       padding: 4px 10px;
       font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      z-index: 2;
+      z-index: 3;
       background: var(--success-bg);
       color: var(--success);
       border: 1px solid #bbf7d0;
@@ -353,23 +346,24 @@
 
     .sto-photo-counter {
       position: absolute;
-      bottom: 10px;
-      right: 10px;
+      bottom: 18px;
+      right: 18px;
       padding: 4px 10px;
-      background: rgba(24, 24, 27, 0.75);
+      background: rgba(24, 24, 27, 0.8);
       color: #fff;
       font-size: 0.7rem;
       font-weight: 600;
-      z-index: 2;
+      z-index: 3;
     }
 
     /* Контент карточки */
     .sto-body {
-      padding: 20px;
+      padding: 18px 20px 20px;
       display: flex;
       flex-direction: column;
       gap: 14px;
       flex: 1;
+      border-top: 1px solid var(--border);
     }
 
     .sto-name {
@@ -670,7 +664,6 @@
       font-size: 1rem;
       font-weight: 700;
       margin-bottom: 10px;
-      letter-spacing: -0.2px;
     }
     .footer-brand-text {
       font-size: 0.85rem;
@@ -752,7 +745,7 @@
       .filters { padding: 14px 16px; gap: 12px; }
       .filters-selects { flex-direction: column; }
       .filters-selects select { width: 100%; }
-      .sto-gallery { height: 140px; }
+      .sto-gallery { height: 160px; padding: 8px; gap: 6px; }
       .sto-photo-num { font-size: 1.4rem; }
       .sto-photo.main .sto-photo-num { font-size: 2rem; }
       .sto-body { padding: 16px; }
