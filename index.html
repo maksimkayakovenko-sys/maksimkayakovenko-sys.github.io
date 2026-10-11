@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>АвтоСервисы Воронежа — каталог СТО</title>
-  <meta name="description" content="Каталог автосервисов Воронежа: адреса, телефоны, цены, отзывы.">
+  <meta name="description" content="Каталог автосервисов Воронежа: адреса, телефоны, цены, отзывы, марки авто.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,8 +28,15 @@
 
       --success: #16a34a;
       --success-bg: #f0fdf4;
+      --warning: #d97706;
+      --warning-bg: #fffbeb;
 
       --font: 'Montserrat', -apple-system, sans-serif;
+
+      /* Мелкое скругление */
+      --radius-sm: 3px;
+      --radius-md: 5px;
+      --radius-lg: 6px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -52,7 +59,7 @@
       border-bottom: 1px solid var(--border);
     }
     .header-inner {
-      max-width: 1240px;
+      max-width: 1280px;
       margin: 0 auto;
       padding: 14px 24px;
       display: flex;
@@ -62,60 +69,38 @@
       position: relative;
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--text);
-    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
     .logo-mark {
-      width: 36px;
-      height: 36px;
-      background: var(--accent);
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 0.9rem;
-      flex-shrink: 0;
+      width: 36px; height: 36px;
+      background: var(--accent); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.9rem; flex-shrink: 0;
+      border-radius: var(--radius-md);
     }
     .logo-text { display: flex; flex-direction: column; line-height: 1.15; }
-    .logo-name { font-weight: 700; font-size: 1rem; letter-spacing: -0.2px; }
+    .logo-name { font-weight: 700; font-size: 1rem; }
     .logo-tag { font-size: 0.68rem; color: var(--text-muted); font-weight: 500; margin-top: 1px; }
 
     .nav { display: flex; gap: 4px; align-items: center; }
     .nav-link {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      padding: 8px 12px;
-      transition: all 0.15s;
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 0.85rem; font-weight: 500;
+      padding: 8px 12px; transition: all 0.15s;
+      border-radius: var(--radius-sm);
     }
     .nav-link:hover { color: var(--text); }
-    .nav-link.accent {
-      background: var(--accent);
-      color: #fff;
-      font-weight: 600;
-    }
+    .nav-link.accent { background: var(--accent); color: #fff; font-weight: 600; border-radius: var(--radius-md); }
     .nav-link.accent:hover { background: var(--accent-hover); color: #fff; }
 
     .menu-btn {
-      display: none;
-      width: 40px;
-      height: 40px;
-      background: transparent;
-      border: 1px solid var(--border);
-      cursor: pointer;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      padding: 0;
+      display: none; width: 40px; height: 40px;
+      background: transparent; border: 1px solid var(--border);
+      cursor: pointer; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 5px; padding: 0;
+      border-radius: var(--radius-md);
     }
-    .menu-btn span { display: block; width: 18px; height: 1.5px; background: var(--text); transition: all 0.25s; }
+    .menu-btn span { display: block; width: 18px; height: 1.5px; background: var(--text); transition: all 0.25s; border-radius: 1px; }
     .menu-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .menu-btn.open span:nth-child(2) { opacity: 0; }
     .menu-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
@@ -124,527 +109,468 @@
     .hero {
       background: var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 56px 24px 48px;
+      padding: 48px 24px 40px;
     }
-    .hero-inner { max-width: 1240px; margin: 0 auto; }
+    .hero-inner { max-width: 1280px; margin: 0 auto; }
     .hero-title {
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 800; line-height: 1.12;
+      letter-spacing: -1px; margin-bottom: 10px;
       max-width: 720px;
     }
     .hero-title em { font-style: normal; color: var(--accent); }
     .hero-sub {
-      font-size: 1rem;
-      color: var(--text-secondary);
-      max-width: 560px;
-      margin-bottom: 32px;
-      line-height: 1.5;
+      font-size: 0.95rem; color: var(--text-secondary);
+      max-width: 600px; margin-bottom: 24px;
     }
 
     .search-bar {
-      display: flex;
-      max-width: 720px;
+      display: flex; max-width: 720px;
       border: 2px solid var(--border);
       background: var(--surface);
       transition: border-color 0.15s;
+      border-radius: var(--radius-md);
+      overflow: hidden;
     }
     .search-bar:focus-within { border-color: var(--accent); }
     .search-bar input {
-      flex: 1;
-      padding: 16px 20px;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: var(--text);
-      font-size: 1rem;
-      font-family: var(--font);
+      flex: 1; padding: 14px 18px;
+      background: transparent; border: none;
+      outline: none; color: var(--text);
+      font-size: 0.95rem; font-family: var(--font);
       font-weight: 500;
     }
     .search-bar input::placeholder { color: var(--text-muted); font-weight: 400; }
     .search-bar button {
-      padding: 16px 32px;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      font-size: 0.9rem;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: var(--font);
-      transition: background 0.15s;
+      padding: 14px 28px;
+      background: var(--accent); color: #fff; border: none;
+      font-size: 0.85rem; font-weight: 700; cursor: pointer;
+      font-family: var(--font); transition: background 0.15s;
       white-space: nowrap;
     }
     .search-bar button:hover { background: var(--accent-hover); }
 
+    .hero-quick {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 16px;
+    }
+    .hero-quick a {
+      font-size: 0.78rem; font-weight: 500;
+      color: var(--text-secondary); text-decoration: none;
+      padding: 5px 12px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      transition: all 0.15s;
+      border-radius: var(--radius-md);
+    }
+    .hero-quick a:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
+
+    /* ===== СТАТИСТИКА ===== */
+    .stats {
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+    }
+    .stats-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; gap: 32px;
+      font-size: 0.82rem; color: var(--text-secondary);
+    }
+    .stats-item strong {
+      color: var(--text); font-weight: 700;
+      margin-right: 4px;
+    }
+
     /* ===== КОНТЕЙНЕР ===== */
-    .container { max-width: 1240px; margin: 0 auto; padding: 32px 24px 64px; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 24px 24px 64px; }
 
     /* ===== ФИЛЬТРЫ ===== */
     .filters {
       background: var(--surface);
       border: 1px solid var(--border);
-      padding: 16px 20px;
-      margin-bottom: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      align-items: center;
+      margin-bottom: 16px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
     }
-    .filters-group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-    .filters-label {
-      font-size: 0.72rem;
-      color: var(--text-muted);
+
+    .filters-toggle {
+      display: none;
+      width: 100%;
+      padding: 14px 18px;
+      background: var(--surface);
+      border: none;
+      font-family: var(--font);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .filters-toggle-left {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .filters-toggle-icon {
+      width: 16px; height: 16px;
+      border: 1.5px solid var(--text);
+      position: relative;
+      border-radius: 2px;
+    }
+    .filters-toggle-icon::before {
+      content: ""; position: absolute;
+      left: 3px; right: 3px; top: 3px;
+      height: 1.5px; background: var(--text);
+      box-shadow: 0 4px 0 var(--text), 0 8px 0 var(--text);
+    }
+    .filters-toggle-badge {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.68rem;
       font-weight: 700;
-      letter-spacing: 0.8px;
+      padding: 2px 7px;
+      min-width: 18px;
+      text-align: center;
+      border-radius: var(--radius-sm);
+    }
+
+    .filters-body { display: block; }
+
+    .filters-row {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      align-items: center;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .filters-row:last-child { border-bottom: none; }
+    .filters-row-label {
+      font-size: 0.7rem; color: var(--text-muted);
+      font-weight: 700; letter-spacing: 0.8px;
       text-transform: uppercase;
-      margin-right: 6px;
-      white-space: nowrap;
+      margin-right: 6px; min-width: 60px;
+    }
+    .chips-group {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      flex: 1;
     }
 
     .chip {
-      padding: 7px 14px;
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text-secondary);
-      font-size: 0.8rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.15s;
-      font-family: var(--font);
+      padding: 6px 12px;
+      background: transparent; border: 1px solid var(--border);
+      color: var(--text-secondary); font-size: 0.78rem;
+      font-weight: 500; cursor: pointer;
+      transition: all 0.15s; font-family: var(--font);
       white-space: nowrap;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      display: inline-flex; align-items: center; gap: 6px;
+      border-radius: var(--radius-md);
     }
     .chip:hover { color: var(--text); border-color: var(--border-hover); }
     .chip.active {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-      font-weight: 600;
+      background: var(--accent); color: #fff;
+      border-color: var(--accent); font-weight: 600;
     }
     .chip-count {
-      font-size: 0.7rem;
-      opacity: 0.6;
-      font-weight: 600;
+      font-size: 0.68rem; opacity: 0.6; font-weight: 600;
     }
     .chip.active .chip-count { opacity: 0.85; }
 
-    .filters-selects { display: flex; gap: 8px; margin-left: auto; flex-wrap: wrap; }
+    .toggle-row {
+      display: flex; flex-wrap: wrap; gap: 16px;
+      align-items: center;
+    }
+    .toggle {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.82rem; color: var(--text-secondary);
+      cursor: pointer; user-select: none;
+      font-weight: 500;
+    }
+    .toggle input { display: none; }
+    .toggle-track {
+      width: 36px; height: 20px;
+      background: var(--border);
+      position: relative; transition: background 0.15s;
+      flex-shrink: 0;
+      border-radius: 10px;
+    }
+    .toggle-track::after {
+      content: ""; position: absolute;
+      left: 2px; top: 2px;
+      width: 16px; height: 16px;
+      background: #fff;
+      transition: transform 0.15s;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+      border-radius: 50%;
+    }
+    .toggle input:checked + .toggle-track { background: var(--accent); }
+    .toggle input:checked + .toggle-track::after { transform: translateX(16px); }
+
+    .filters-selects {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      padding: 14px 18px;
+      background: var(--surface-2);
+      align-items: center;
+    }
     .filters-selects select {
-      padding: 8px 14px;
+      padding: 8px 12px;
       background: var(--surface);
       border: 1px solid var(--border);
       color: var(--text);
-      font-size: 0.82rem;
-      font-family: var(--font);
-      font-weight: 500;
-      cursor: pointer;
-      outline: none;
-      appearance: none;
+      font-size: 0.8rem; font-family: var(--font);
+      font-weight: 500; cursor: pointer;
+      outline: none; appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%2371717a' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
-      background-position: right 12px center;
-      padding-right: 30px;
+      background-position: right 10px center;
+      padding-right: 26px;
       transition: border-color 0.15s;
+      border-radius: var(--radius-md);
     }
     .filters-selects select:focus { border-color: var(--accent); }
 
+    .filters-reset {
+      margin-left: auto;
+      padding: 8px 14px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 0.8rem; font-family: var(--font);
+      font-weight: 600; cursor: pointer;
+      transition: all 0.15s;
+      border-radius: var(--radius-md);
+    }
+    .filters-reset:hover { color: var(--accent); border-color: var(--accent); }
+
     /* ===== РЕЗУЛЬТАТЫ ===== */
     .results-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 16px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 16px;
+      margin-bottom: 16px; flex-wrap: wrap;
     }
     .results-title {
-      font-size: 1.15rem;
-      font-weight: 700;
+      font-size: 1.1rem; font-weight: 700;
       letter-spacing: -0.3px;
     }
     .results-title span { color: var(--text-muted); font-weight: 500; }
-    .results-meta {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
+    .results-sort {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.82rem; color: var(--text-secondary);
     }
 
     /* ===== СЕТКА СТО ===== */
     .sto-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      display: grid; grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
 
     .sto-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
       transition: border-color 0.15s, box-shadow 0.15s;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
     }
     .sto-card:hover {
       border-color: var(--border-hover);
       box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04);
     }
 
-    /* Галерея 3 фото */
     .sto-gallery {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 8px;
-      height: 200px;
-      padding: 10px;
-      background: var(--surface);
-      position: relative;
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 6px; height: 180px; padding: 8px;
+      background: var(--surface); position: relative;
     }
     .sto-photo {
       background: var(--surface-2);
       border: 1.5px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; cursor: pointer;
       transition: all 0.2s;
+      border-radius: var(--radius-md);
     }
-    .sto-photo:hover {
-      background: #f0f0f3;
-      border-color: var(--accent);
-    }
-
+    .sto-photo:hover { background: #f0f0f3; border-color: var(--accent); }
     .sto-photo-num {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #c4c4c9;
-      letter-spacing: -1px;
-      position: relative;
-      z-index: 1;
+      font-size: 1.8rem; font-weight: 800;
+      color: #c4c4c9; letter-spacing: -1px;
+      position: relative; z-index: 1;
       transition: color 0.2s;
     }
-    .sto-photo.main .sto-photo-num { font-size: 3rem; }
+    .sto-photo.main .sto-photo-num { font-size: 2.6rem; }
     .sto-photo:hover .sto-photo-num { color: var(--accent); }
 
-    .sto-badge {
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      padding: 4px 10px;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
+    .sto-badges {
+      position: absolute; top: 14px; left: 14px;
+      display: flex; gap: 4px; flex-wrap: wrap;
       z-index: 3;
-      background: var(--success-bg);
-      color: var(--success);
-      border: 1px solid #bbf7d0;
     }
+    .badge {
+      padding: 3px 8px;
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.4px; text-transform: uppercase;
+      border-radius: var(--radius-sm);
+    }
+    .badge-verified { background: var(--success-bg); color: var(--success); border: 1px solid #bbf7d0; }
+    .badge-top { background: var(--warning-bg); color: var(--warning); border: 1px solid #fde68a; }
+    .badge-new { background: var(--accent-dim); color: var(--accent); border: 1px solid #bfdbfe; }
 
     .sto-photo-counter {
-      position: absolute;
-      bottom: 18px;
-      right: 18px;
-      padding: 4px 10px;
+      position: absolute; bottom: 14px; right: 14px;
+      padding: 3px 8px;
       background: rgba(24, 24, 27, 0.8);
-      color: #fff;
-      font-size: 0.7rem;
-      font-weight: 600;
-      z-index: 3;
+      color: #fff; font-size: 0.68rem;
+      font-weight: 600; z-index: 3;
+      border-radius: var(--radius-sm);
     }
 
-    /* Контент карточки */
     .sto-body {
-      padding: 18px 20px 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      flex: 1;
+      padding: 16px 20px 20px;
+      display: flex; flex-direction: column;
+      gap: 12px; flex: 1;
       border-top: 1px solid var(--border);
     }
 
     .sto-name {
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      line-height: 1.25;
+      font-size: 1.08rem; font-weight: 700;
+      letter-spacing: -0.3px; line-height: 1.25;
       color: var(--text);
     }
     .sto-category {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      margin-top: 4px;
-      line-height: 1.4;
+      font-size: 0.8rem; color: var(--text-secondary);
+      margin-top: 2px; line-height: 1.4;
     }
 
     .sto-rating {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding-top: 4px;
+      display: flex; align-items: center; gap: 8px;
+      padding-top: 2px;
     }
-    .sto-stars {
-      color: #f59e0b;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-    }
-    .sto-score {
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--text);
-    }
-    .sto-reviews {
+    .sto-stars { color: #f59e0b; font-size: 0.85rem; letter-spacing: 1px; }
+    .sto-score { font-weight: 700; font-size: 0.9rem; }
+    .sto-reviews { font-size: 0.78rem; color: var(--text-muted); }
+
+    .sto-info-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 8px 16px;
+      padding: 12px 0;
+      border-top: 1px solid var(--border);
       font-size: 0.82rem;
-      color: var(--text-muted);
     }
+    .sto-info-item {
+      display: flex; flex-direction: column;
+      gap: 2px;
+    }
+    .sto-info-label {
+      font-size: 0.68rem; color: var(--text-muted);
+      font-weight: 700; letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .sto-info-value {
+      color: var(--text); font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .sto-info-value.open-now { color: var(--success); }
+    .sto-info-value.closed { color: var(--text-muted); }
 
     .sto-address {
-      display: flex;
-      gap: 10px;
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
-      padding-top: 14px;
+      display: flex; gap: 8px;
+      font-size: 0.82rem; color: var(--text-secondary);
+      line-height: 1.45;
+      padding-top: 10px;
       border-top: 1px solid var(--border);
     }
     .sto-address-label {
       color: var(--text-muted);
-      font-weight: 600;
-      font-size: 0.72rem;
+      font-weight: 700; font-size: 0.68rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      flex-shrink: 0;
-      padding-top: 2px;
-      min-width: 48px;
+      flex-shrink: 0; padding-top: 2px;
+      min-width: 50px;
+    }
+
+    .sto-brands {
+      display: flex; flex-wrap: wrap; gap: 4px;
+      font-size: 0.72rem;
+      padding-top: 4px;
+    }
+    .brand-tag {
+      padding: 3px 7px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-weight: 600;
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius-sm);
     }
 
     .sto-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
+      display: flex; flex-wrap: wrap; gap: 5px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
     }
     .sto-tag {
-      padding: 4px 10px;
+      padding: 3px 8px;
       background: var(--surface-2);
       color: var(--text-secondary);
-      font-size: 0.75rem;
-      font-weight: 500;
+      font-size: 0.72rem; font-weight: 500;
       white-space: nowrap;
       border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
     }
     .sto-tag.more { color: var(--accent); border-color: #bfdbfe; background: var(--accent-dim); }
 
     .sto-actions {
-      display: flex;
-      gap: 8px;
-      padding-top: 14px;
+      display: flex; gap: 8px;
+      padding-top: 12px;
       border-top: 1px solid var(--border);
       margin-top: auto;
     }
     .sto-btn {
-      padding: 11px 18px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: 1px solid transparent;
-      font-family: var(--font);
-      transition: all 0.15s;
+      padding: 10px 16px;
+      font-size: 0.8rem; font-weight: 600;
+      cursor: pointer; border: 1px solid transparent;
+      font-family: var(--font); transition: all 0.15s;
       white-space: nowrap;
+      border-radius: var(--radius-md);
     }
-    .sto-btn-primary {
-      flex: 1;
-      background: var(--accent);
-      color: #fff;
-    }
+    .sto-btn-primary { flex: 1; background: var(--accent); color: #fff; }
     .sto-btn-primary:hover { background: var(--accent-hover); }
     .sto-btn-secondary {
-      background: var(--surface);
-      color: var(--text-secondary);
+      background: var(--surface); color: var(--text-secondary);
       border-color: var(--border);
     }
     .sto-btn-secondary:hover { color: var(--text); border-color: var(--border-hover); background: var(--surface-2); }
 
-    /* ===== CTA ДЛЯ СТО ===== */
-    .cta {
-      max-width: 1240px;
-      margin: 0 auto 64px;
-      padding: 0 24px;
-    }
+    /* ===== CTA ===== */
+    .cta { max-width: 1280px; margin: 0 auto 48px; padding: 0 24px; }
     .cta-inner {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 32px;
-      flex-wrap: wrap;
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 36px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px; flex-wrap: wrap;
+      border-radius: var(--radius-lg);
     }
     .cta-left { flex: 1; min-width: 280px; }
     .cta-label {
-      font-size: 0.72rem;
-      color: var(--accent);
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+      font-size: 0.7rem; color: var(--accent);
+      font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; margin-bottom: 8px;
     }
     .cta-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 10px;
+      font-size: 1.4rem; font-weight: 700;
+      letter-spacing: -0.5px; margin-bottom: 8px;
       line-height: 1.2;
     }
     .cta-text {
-      font-size: 0.92rem;
-      color: var(--text-secondary);
-      line-height: 1.55;
-      max-width: 520px;
+      font-size: 0.9rem; color: var(--text-secondary);
+      line-height: 1.55; max-width: 520px;
     }
     .cta-btn {
-      padding: 14px 28px;
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-decoration: none;
-      white-space: nowrap;
-      transition: background 0.15s;
-      flex-shrink: 0;
+      padding: 13px 26px;
+      background: var(--accent); color: #fff;
+      font-size: 0.85rem; font-weight: 700;
+      text-decoration: none; white-space: nowrap;
+      transition: background 0.15s; flex-shrink: 0;
+      border-radius: var(--radius-md);
     }
     .cta-btn:hover { background: var(--accent-hover); }
-
-    /* ===== ТАРИФЫ ===== */
-    .pricing { max-width: 1240px; margin: 0 auto 64px; padding: 0 24px; }
-    .pricing-header { text-align: center; margin-bottom: 32px; }
-    .pricing-label {
-      font-size: 0.72rem;
-      color: var(--accent);
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .pricing-title {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      margin-bottom: 10px;
-    }
-    .pricing-sub {
-      font-size: 0.92rem;
-      color: var(--text-secondary);
-      max-width: 520px;
-      margin: 0 auto;
-    }
-
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .pricing-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 32px 28px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      transition: border-color 0.15s;
-    }
-    .pricing-card:hover { border-color: var(--border-hover); }
-    .pricing-card.featured {
-      border: 2px solid var(--accent);
-    }
-    .pricing-card.featured::before {
-      content: "популярный";
-      position: absolute;
-      top: -1px;
-      right: 20px;
-      padding: 4px 10px;
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    .pricing-tier {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .pricing-name {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      letter-spacing: -0.3px;
-    }
-    .pricing-desc {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      margin-bottom: 24px;
-      line-height: 1.5;
-    }
-    .pricing-amount {
-      font-size: 2.2rem;
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: -1px;
-      margin-bottom: 6px;
-      color: var(--text);
-    }
-    .pricing-period {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 28px;
-    }
-    .pricing-list {
-      list-style: none;
-      padding: 20px 0;
-      border-top: 1px solid var(--border);
-      margin-bottom: 24px;
-      flex: 1;
-    }
-    .pricing-list li {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      padding: 7px 0;
-      display: flex;
-      gap: 10px;
-      align-items: flex-start;
-      line-height: 1.5;
-    }
-    .pricing-list li::before {
-      content: "✓";
-      color: var(--success);
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-    .pricing-btn {
-      display: block;
-      padding: 13px 20px;
-      text-align: center;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.15s;
-      border: 1px solid var(--border);
-      font-family: var(--font);
-    }
-    .pricing-btn.outline { color: var(--text); background: var(--surface); }
-    .pricing-btn.outline:hover { border-color: var(--accent); color: var(--accent); }
-    .pricing-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
-    .pricing-btn.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
 
     /* ===== ПОДВАЛ ===== */
     .footer {
@@ -653,114 +579,188 @@
       padding: 48px 24px 24px;
     }
     .footer-inner {
-      max-width: 1240px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 40px;
-      margin-bottom: 40px;
+      max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+      gap: 32px; margin-bottom: 40px;
     }
     .footer-brand-name {
-      font-size: 1rem;
-      font-weight: 700;
+      font-size: 1rem; font-weight: 700;
       margin-bottom: 10px;
     }
     .footer-brand-text {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      line-height: 1.55;
-      max-width: 300px;
+      font-size: 0.82rem; color: var(--text-secondary);
+      line-height: 1.55; max-width: 280px;
+      margin-bottom: 12px;
+    }
+    .footer-phone {
+      font-size: 0.9rem; font-weight: 700;
+      color: var(--accent); text-decoration: none;
     }
     .footer-heading {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 14px;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.8px; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 12px;
     }
     .footer-list { list-style: none; }
-    .footer-list li { margin-bottom: 8px; }
+    .footer-list li { margin-bottom: 7px; }
     .footer-list a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 0.15s;
+      color: var(--text-secondary); text-decoration: none;
+      font-size: 0.82rem; transition: color 0.15s;
     }
     .footer-list a:hover { color: var(--accent); }
     .footer-bottom {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      max-width: 1280px; margin: 0 auto;
+      padding-top: 20px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+      font-size: 0.75rem; color: var(--text-muted);
     }
 
     /* ===== АДАПТИВ ===== */
     @media (max-width: 1024px) {
       .sto-grid { grid-template-columns: 1fr; }
-      .pricing-grid { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .filters-selects { margin-left: 0; width: 100%; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
     }
+
     @media (max-width: 900px) {
       .header-inner { padding: 12px 20px; }
       .logo-tag { display: none; }
       .menu-btn { display: flex; }
       .nav {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
+        position: absolute; top: 100%; left: 0; right: 0;
         background: var(--surface);
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
+        flex-direction: column; align-items: stretch; gap: 0;
         padding: 8px 20px 16px;
         border-top: 1px solid var(--border);
         border-bottom: 1px solid var(--border);
-        transform: translateY(-8px);
-        opacity: 0;
-        visibility: hidden;
+        transform: translateY(-8px); opacity: 0; visibility: hidden;
         transition: all 0.2s;
         box-shadow: 0 8px 24px rgba(0,0,0,0.08);
       }
       .nav.open { transform: translateY(0); opacity: 1; visibility: visible; }
       .nav-link { padding: 14px 8px; border-bottom: 1px solid var(--border); }
       .nav-link:last-child { border-bottom: none; }
+      .stats-inner { gap: 20px; }
     }
+
     @media (max-width: 640px) {
-      .hero { padding: 40px 20px 32px; }
-      .hero-title { font-size: 1.6rem; }
-      .hero-sub { font-size: 0.92rem; }
+      body { font-size: 14px; }
+
+      .hero { padding: 24px 16px 20px; }
+      .hero-title { font-size: 1.4rem; margin-bottom: 8px; }
+      .hero-sub { font-size: 0.85rem; margin-bottom: 16px; line-height: 1.45; }
+
       .search-bar { flex-direction: column; }
-      .search-bar input { padding: 14px 16px; }
-      .search-bar button { width: 100%; padding: 14px; }
-      .container { padding: 24px 20px 48px; }
-      .filters { padding: 14px 16px; gap: 12px; }
-      .filters-selects { flex-direction: column; }
-      .filters-selects select { width: 100%; }
-      .sto-gallery { height: 160px; padding: 8px; gap: 6px; }
-      .sto-photo-num { font-size: 1.4rem; }
-      .sto-photo.main .sto-photo-num { font-size: 2rem; }
-      .sto-body { padding: 16px; }
-      .sto-actions { flex-direction: column; }
-      .sto-btn-secondary { width: 100%; }
-      .cta { padding: 0 20px; }
-      .cta-inner { padding: 28px 20px; }
-      .cta-title { font-size: 1.2rem; }
-      .cta-btn { width: 100%; text-align: center; }
-      .pricing { padding: 0 20px; }
-      .pricing-title { font-size: 1.35rem; }
-      .pricing-card { padding: 24px 20px; }
-      .pricing-amount { font-size: 1.8rem; }
-      .footer { padding: 40px 20px 20px; }
-      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+      .search-bar input { padding: 11px 14px; font-size: 0.9rem; }
+      .search-bar button { width: 100%; padding: 11px; font-size: 0.82rem; }
+
+      .hero-quick {
+        gap: 6px; margin-top: 12px;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 4px;
+        scrollbar-width: none;
+      }
+      .hero-quick::-webkit-scrollbar { display: none; }
+      .hero-quick a { flex-shrink: 0; font-size: 0.72rem; padding: 5px 10px; }
+
+      .stats { padding: 10px 16px; }
+      .stats-inner {
+        gap: 12px;
+        font-size: 0.72rem;
+        justify-content: space-between;
+      }
+
+      .container { padding: 14px 16px 40px; }
+
+      .filters-toggle { display: flex; }
+      .filters-body {
+        display: none;
+        border-top: 1px solid var(--border);
+      }
+      .filters-body.open { display: block; }
+
+      .filters-row {
+        padding: 12px 16px;
+        gap: 8px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .filters-row-label { min-width: auto; margin-bottom: 2px; }
+      .chips-group { gap: 5px; width: 100%; }
+      .chip { font-size: 0.72rem; padding: 5px 10px; }
+
+      .toggle-row { flex-direction: column; align-items: flex-start; gap: 10px; width: 100%; }
+      .toggle { font-size: 0.8rem; }
+
+      .filters-selects {
+        padding: 12px 16px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+      .filters-selects select { width: 100%; font-size: 0.8rem; padding: 9px 12px; padding-right: 28px; }
+      .filters-reset { width: 100%; margin-left: 0; }
+
+      .results-header { margin-bottom: 12px; gap: 8px; }
+      .results-title { font-size: 0.95rem; }
+      .results-sort { font-size: 0.75rem; }
+
+      .sto-grid { gap: 12px; }
+
+      .sto-gallery {
+        height: 140px;
+        padding: 6px;
+        gap: 4px;
+      }
+      .sto-photo-num { font-size: 1.3rem; }
+      .sto-photo.main .sto-photo-num { font-size: 1.8rem; }
+      .sto-badges { top: 10px; left: 10px; }
+      .badge { font-size: 0.58rem; padding: 2px 6px; }
+      .sto-photo-counter { bottom: 10px; right: 10px; font-size: 0.6rem; padding: 2px 6px; }
+
+      .sto-body { padding: 12px 14px 14px; gap: 9px; }
+
+      .sto-name { font-size: 0.95rem; }
+      .sto-category { font-size: 0.74rem; }
+
+      .sto-rating { gap: 6px; }
+      .sto-stars { font-size: 0.78rem; }
+      .sto-score { font-size: 0.82rem; }
+      .sto-reviews { font-size: 0.72rem; }
+
+      .sto-info-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 6px 12px;
+        padding: 9px 0;
+      }
+      .sto-info-label { font-size: 0.62rem; }
+      .sto-info-value { font-size: 0.78rem; }
+
+      .sto-address { font-size: 0.76rem; padding-top: 8px; gap: 6px; }
+      .sto-address-label { min-width: 42px; font-size: 0.62rem; }
+
+      .sto-brands { gap: 3px; }
+      .brand-tag { font-size: 0.66rem; padding: 2px 6px; }
+
+      .sto-tags { gap: 4px; padding-top: 7px; }
+      .sto-tag { font-size: 0.68rem; padding: 2px 7px; }
+
+      .sto-actions {
+        padding-top: 10px;
+        gap: 6px;
+      }
+      .sto-btn { padding: 9px 12px; font-size: 0.75rem; }
+
+      .cta { padding: 0 16px; margin-bottom: 32px; }
+      .cta-inner { padding: 20px 16px; gap: 16px; }
+      .cta-title { font-size: 1.05rem; }
+      .cta-text { font-size: 0.82rem; }
+      .cta-btn { width: 100%; text-align: center; padding: 11px; font-size: 0.82rem; }
+
+      .footer { padding: 28px 16px 16px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 20px; }
+      .footer-bottom { flex-direction: column; gap: 6px; font-size: 0.72rem; }
     }
   </style>
 </head>
@@ -791,92 +791,202 @@
   <section class="hero">
     <div class="hero-inner">
       <h1 class="hero-title">Найдите автосервис <em>в Воронеже</em></h1>
-      <p class="hero-sub">Проверенные СТО с ценами, отзывами и адресами. Отбор по району, марке авто и типу ремонта.</p>
+      <p class="hero-sub">Проверенные СТО с ценами, отзывами и адресами.</p>
 
       <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Название СТО, услуга или адрес">
+        <input type="text" id="searchInput" placeholder="Название, услуга или адрес">
         <button id="searchBtn">Найти</button>
+      </div>
+
+      <div class="hero-quick">
+        <a href="#catalog">ТО</a>
+        <a href="#catalog">Кузовной</a>
+        <a href="#catalog">Шиномонтаж</a>
+        <a href="#catalog">Диагностика</a>
+        <a href="#catalog">АКПП</a>
+        <a href="#catalog">24/7</a>
       </div>
     </div>
   </section>
+
+  <!-- СТАТИСТИКА -->
+  <div class="stats">
+    <div class="stats-inner">
+      <span class="stats-item"><strong>48</strong> СТО</span>
+      <span class="stats-item"><strong>6</strong> районов</span>
+      <span class="stats-item"><strong>1 288</strong> отзывов</span>
+      <span class="stats-item">Обновлено сегодня</span>
+    </div>
+  </div>
 
   <div class="container" id="catalog">
 
     <!-- ФИЛЬТРЫ -->
     <div class="filters">
-      <div class="filters-group">
-        <span class="filters-label">Район</span>
-        <button class="chip active" data-district="all">Все <span class="chip-count">48</span></button>
-        <button class="chip" data-district="leninsky">Ленинский <span class="chip-count">8</span></button>
-        <button class="chip" data-district="central">Центральный <span class="chip-count">11</span></button>
-        <button class="chip" data-district="kominter">Коминтерновский <span class="chip-count">12</span></button>
-        <button class="chip" data-district="sovetsky">Советский <span class="chip-count">7</span></button>
-        <button class="chip" data-district="zheleznodor">Железнодорожный <span class="chip-count">5</span></button>
-        <button class="chip" data-district="levoberezh">Левобережный <span class="chip-count">5</span></button>
-      </div>
 
-      <div class="filters-selects">
-        <select id="serviceFilter">
-          <option value="">Все услуги</option>
-          <option value="to">ТО и обслуживание</option>
-          <option value="body">Кузовной ремонт</option>
-          <option value="diagnostics">Диагностика</option>
-          <option value="tires">Шиномонтаж</option>
-          <option value="engine">Ремонт двигателя</option>
-          <option value="transmission">АКПП/МКПП</option>
-        </select>
-        <select id="brandFilter">
-          <option value="">Все марки</option>
-          <option value="universal">Универсальные</option>
-          <option value="german">Немецкие</option>
-          <option value="korean">Корейские</option>
-          <option value="japanese">Японские</option>
-          <option value="russian">Российские</option>
-        </select>
-        <select id="ratingFilter">
-          <option value="">Любой рейтинг</option>
-          <option value="4.5">4.5 и выше</option>
-          <option value="4.0">4.0 и выше</option>
-        </select>
+      <button class="filters-toggle" id="filtersToggle">
+        <span class="filters-toggle-left">
+          <span class="filters-toggle-icon"></span>
+          <span>Фильтры</span>
+        </span>
+        <span class="filters-toggle-badge" id="filtersBadge">0</span>
+      </button>
+
+      <div class="filters-body" id="filtersBody">
+
+        <div class="filters-row">
+          <span class="filters-row-label">Район</span>
+          <div class="chips-group" id="districtsChips">
+            <button class="chip active" data-district="all">Все <span class="chip-count">48</span></button>
+            <button class="chip" data-district="leninsky">Ленинский <span class="chip-count">8</span></button>
+            <button class="chip" data-district="central">Центральный <span class="chip-count">11</span></button>
+            <button class="chip" data-district="kominter">Коминтерновский <span class="chip-count">12</span></button>
+            <button class="chip" data-district="sovetsky">Советский <span class="chip-count">7</span></button>
+            <button class="chip" data-district="zheleznodor">Железнодорожный <span class="chip-count">5</span></button>
+            <button class="chip" data-district="levoberezh">Левобережный <span class="chip-count">5</span></button>
+          </div>
+        </div>
+
+        <div class="filters-row">
+          <span class="filters-row-label">Услуга</span>
+          <div class="chips-group">
+            <button class="chip" data-service="to">ТО</button>
+            <button class="chip" data-service="body">Кузовной</button>
+            <button class="chip" data-service="diagnostics">Диагностика</button>
+            <button class="chip" data-service="tires">Шиномонтаж</button>
+            <button class="chip" data-service="engine">Двигатель</button>
+            <button class="chip" data-service="transmission">АКПП</button>
+          </div>
+        </div>
+
+        <div class="filters-row">
+          <span class="filters-row-label">Марки</span>
+          <div class="chips-group">
+            <button class="chip" data-brand="universal">Универсальные</button>
+            <button class="chip" data-brand="german">Немецкие</button>
+            <button class="chip" data-brand="korean">Корейские</button>
+            <button class="chip" data-brand="japanese">Японские</button>
+            <button class="chip" data-brand="russian">Российские</button>
+          </div>
+        </div>
+
+        <div class="filters-row">
+          <span class="filters-row-label">Ещё</span>
+          <div class="toggle-row">
+            <label class="toggle">
+              <input type="checkbox" id="openNow">
+              <span class="toggle-track"></span>
+              Открыто сейчас
+            </label>
+            <label class="toggle">
+              <input type="checkbox" id="verifiedOnly">
+              <span class="toggle-track"></span>
+              Проверенные
+            </label>
+            <label class="toggle">
+              <input type="checkbox" id="withPhoto">
+              <span class="toggle-track"></span>
+              С фото
+            </label>
+          </div>
+        </div>
+
+        <div class="filters-selects">
+          <select id="ratingFilter">
+            <option value="">Рейтинг</option>
+            <option value="4.5">4.5+</option>
+            <option value="4.0">4.0+</option>
+            <option value="3.5">3.5+</option>
+          </select>
+          <select id="priceFilter">
+            <option value="">Цены</option>
+            <option value="low">Экономные</option>
+            <option value="mid">Средние</option>
+            <option value="high">Премиум</option>
+          </select>
+          <select id="experienceFilter">
+            <option value="">Опыт</option>
+            <option value="15">15+ лет</option>
+            <option value="10">10+ лет</option>
+            <option value="5">5+ лет</option>
+          </select>
+          <select id="sortFilter">
+            <option value="rating">По рейтингу</option>
+            <option value="reviews">По отзывам</option>
+            <option value="experience">По опыту</option>
+          </select>
+          <button class="filters-reset" id="resetBtn">Сбросить</button>
+        </div>
+
       </div>
     </div>
 
     <!-- РЕЗУЛЬТАТЫ -->
     <div class="results-header">
-      <h2 class="results-title">Автосервисы Воронежа <span>— <span id="resultsCount">48</span></span></h2>
-      <div class="results-meta">Обновлено сегодня</div>
+      <h2 class="results-title">Автосервисы <span>— <span id="resultsCount">48</span></span></h2>
+      <div class="results-sort">Обновлено сегодня</div>
     </div>
 
     <!-- СЕТКА СТО -->
     <div class="sto-grid" id="stoGrid">
 
-      <article class="sto-card" data-district="leninsky" data-service="to,diagnostics" data-brand="german,korean" data-rating="4.8">
+      <article class="sto-card"
+        data-district="leninsky" data-service="to,diagnostics,engine"
+        data-brand="german,korean,japanese" data-rating="4.8" data-reviews="127"
+        data-experience="12" data-price="mid" data-verified="true" data-photo="true" data-open="true">
         <div class="sto-gallery">
           <div class="sto-photo main"><div class="sto-photo-num">01</div></div>
           <div class="sto-photo"><div class="sto-photo-num">02</div></div>
           <div class="sto-photo"><div class="sto-photo-num">03</div></div>
-          <div class="sto-badge">Проверено</div>
-          <div class="sto-photo-counter">+5 фото</div>
+          <div class="sto-badges">
+            <span class="badge badge-verified">Проверено</span>
+            <span class="badge badge-top">Топ</span>
+          </div>
+          <div class="sto-photo-counter">+5</div>
         </div>
         <div class="sto-body">
           <div>
-            <h3 class="sto-name">АвтоТехЦентр на Ленинском</h3>
-            <div class="sto-category">СТО полного цикла · 12 лет на рынке</div>
+            <h3 class="sto-name">АвтоТехЦентр</h3>
+            <div class="sto-category">СТО полного цикла · мультибренд</div>
             <div class="sto-rating">
               <span class="sto-stars">★★★★★</span>
               <span class="sto-score">4.8</span>
               <span class="sto-reviews">127 отзывов</span>
             </div>
           </div>
+          <div class="sto-info-grid">
+            <div class="sto-info-item">
+              <span class="sto-info-label">Опыт</span>
+              <span class="sto-info-value">12 лет</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Сегодня</span>
+              <span class="sto-info-value open-now">До 21:00</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Цены</span>
+              <span class="sto-info-value">Средние</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Гарантия</span>
+              <span class="sto-info-value">до 2 лет</span>
+            </div>
+          </div>
           <div class="sto-address">
             <span class="sto-address-label">Адрес</span>
-            <span>Ленинский проспект, 174<br>Ленинский район</span>
+            <span>Ленинский пр-т, 174<br>Ленинский район</span>
+          </div>
+          <div class="sto-brands">
+            <span class="brand-tag">BMW</span>
+            <span class="brand-tag">Audi</span>
+            <span class="brand-tag">Kia</span>
+            <span class="brand-tag">+3</span>
           </div>
           <div class="sto-tags">
             <span class="sto-tag">ТО</span>
             <span class="sto-tag">Диагностика</span>
-            <span class="sto-tag">Ремонт двигателя</span>
-            <span class="sto-tag more">+4 услуги</span>
+            <span class="sto-tag">Двигатель</span>
+            <span class="sto-tag more">+4</span>
           </div>
           <div class="sto-actions">
             <button class="sto-btn sto-btn-primary">Позвонить</button>
@@ -885,33 +995,60 @@
         </div>
       </article>
 
-      <article class="sto-card" data-district="central" data-service="body" data-brand="universal" data-rating="4.9">
+      <article class="sto-card"
+        data-district="central" data-service="body" data-brand="universal"
+        data-rating="4.9" data-reviews="89" data-experience="18" data-price="high"
+        data-verified="true" data-photo="true" data-open="true">
         <div class="sto-gallery">
           <div class="sto-photo main"><div class="sto-photo-num">04</div></div>
           <div class="sto-photo"><div class="sto-photo-num">05</div></div>
           <div class="sto-photo"><div class="sto-photo-num">06</div></div>
-          <div class="sto-badge">Проверено</div>
-          <div class="sto-photo-counter">+9 фото</div>
+          <div class="sto-badges">
+            <span class="badge badge-verified">Проверено</span>
+            <span class="badge badge-top">Топ</span>
+          </div>
+          <div class="sto-photo-counter">+9</div>
         </div>
         <div class="sto-body">
           <div>
             <h3 class="sto-name">Кузовной центр «Мастер»</h3>
-            <div class="sto-category">Кузовной ремонт · Работа с ОСАГО</div>
+            <div class="sto-category">Кузовной ремонт · ОСАГО</div>
             <div class="sto-rating">
               <span class="sto-stars">★★★★★</span>
               <span class="sto-score">4.9</span>
               <span class="sto-reviews">89 отзывов</span>
             </div>
           </div>
+          <div class="sto-info-grid">
+            <div class="sto-info-item">
+              <span class="sto-info-label">Опыт</span>
+              <span class="sto-info-value">18 лет</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Сегодня</span>
+              <span class="sto-info-value open-now">До 20:00</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Цены</span>
+              <span class="sto-info-value">Премиум</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Страховые</span>
+              <span class="sto-info-value">ОСАГО, КАСКО</span>
+            </div>
+          </div>
           <div class="sto-address">
             <span class="sto-address-label">Адрес</span>
             <span>Кольцовская, 24<br>Центральный район</span>
           </div>
+          <div class="sto-brands">
+            <span class="brand-tag">Все марки</span>
+          </div>
           <div class="sto-tags">
-            <span class="sto-tag">Кузовной ремонт</span>
+            <span class="sto-tag">Кузовной</span>
             <span class="sto-tag">Покраска</span>
             <span class="sto-tag">ОСАГО</span>
-            <span class="sto-tag more">+3 услуги</span>
+            <span class="sto-tag more">+3</span>
           </div>
           <div class="sto-actions">
             <button class="sto-btn sto-btn-primary">Позвонить</button>
@@ -920,33 +1057,62 @@
         </div>
       </article>
 
-      <article class="sto-card" data-district="kominter" data-service="diagnostics,transmission" data-brand="german" data-rating="4.7">
+      <article class="sto-card"
+        data-district="kominter" data-service="diagnostics,transmission"
+        data-brand="german" data-rating="4.7" data-reviews="156" data-experience="15"
+        data-price="high" data-verified="true" data-photo="true" data-open="false">
         <div class="sto-gallery">
           <div class="sto-photo main"><div class="sto-photo-num">07</div></div>
           <div class="sto-photo"><div class="sto-photo-num">08</div></div>
           <div class="sto-photo"><div class="sto-photo-num">09</div></div>
-          <div class="sto-badge">Проверено</div>
-          <div class="sto-photo-counter">+6 фото</div>
+          <div class="sto-badges">
+            <span class="badge badge-verified">Проверено</span>
+          </div>
+          <div class="sto-photo-counter">+6</div>
         </div>
         <div class="sto-body">
           <div>
             <h3 class="sto-name">Немецкий АвтоСервис</h3>
-            <div class="sto-category">Специализация: BMW, Audi, VW</div>
+            <div class="sto-category">BMW, Audi, VW, Porsche</div>
             <div class="sto-rating">
               <span class="sto-stars">★★★★☆</span>
               <span class="sto-score">4.7</span>
               <span class="sto-reviews">156 отзывов</span>
             </div>
           </div>
+          <div class="sto-info-grid">
+            <div class="sto-info-item">
+              <span class="sto-info-label">Опыт</span>
+              <span class="sto-info-value">15 лет</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Сегодня</span>
+              <span class="sto-info-value closed">Завтра 9:00</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Цены</span>
+              <span class="sto-info-value">Премиум</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Запчасти</span>
+              <span class="sto-info-value">Оригинал</span>
+            </div>
+          </div>
           <div class="sto-address">
             <span class="sto-address-label">Адрес</span>
             <span>Московский пр-т, 142Б<br>Коминтерновский район</span>
           </div>
+          <div class="sto-brands">
+            <span class="brand-tag">BMW</span>
+            <span class="brand-tag">Audi</span>
+            <span class="brand-tag">VW</span>
+            <span class="brand-tag">Porsche</span>
+          </div>
           <div class="sto-tags">
             <span class="sto-tag">Диагностика</span>
-            <span class="sto-tag">Ремонт АКПП</span>
+            <span class="sto-tag">АКПП</span>
             <span class="sto-tag">Электрика</span>
-            <span class="sto-tag more">+5 услуг</span>
+            <span class="sto-tag more">+5</span>
           </div>
           <div class="sto-actions">
             <button class="sto-btn sto-btn-primary">Позвонить</button>
@@ -955,27 +1121,53 @@
         </div>
       </article>
 
-      <article class="sto-card" data-district="sovetsky" data-service="tires" data-brand="universal" data-rating="4.5">
+      <article class="sto-card"
+        data-district="sovetsky" data-service="tires" data-brand="universal"
+        data-rating="4.5" data-reviews="203" data-experience="7" data-price="low"
+        data-verified="true" data-photo="true" data-open="true">
         <div class="sto-gallery">
           <div class="sto-photo main"><div class="sto-photo-num">10</div></div>
           <div class="sto-photo"><div class="sto-photo-num">11</div></div>
           <div class="sto-photo"><div class="sto-photo-num">12</div></div>
-          <div class="sto-badge">Проверено</div>
-          <div class="sto-photo-counter">+3 фото</div>
+          <div class="sto-badges">
+            <span class="badge badge-verified">Проверено</span>
+          </div>
+          <div class="sto-photo-counter">+3</div>
         </div>
         <div class="sto-body">
           <div>
-            <h3 class="sto-name">Шиномонтаж 24/7 на Советской</h3>
-            <div class="sto-category">Круглосуточный шиномонтаж</div>
+            <h3 class="sto-name">Шиномонтаж 24/7</h3>
+            <div class="sto-category">Круглосуточно</div>
             <div class="sto-rating">
               <span class="sto-stars">★★★★☆</span>
               <span class="sto-score">4.5</span>
               <span class="sto-reviews">203 отзыва</span>
             </div>
           </div>
+          <div class="sto-info-grid">
+            <div class="sto-info-item">
+              <span class="sto-info-label">Опыт</span>
+              <span class="sto-info-value">7 лет</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Сегодня</span>
+              <span class="sto-info-value open-now">Круглосуточно</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Цены</span>
+              <span class="sto-info-value">Экономные</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Запись</span>
+              <span class="sto-info-value">Без записи</span>
+            </div>
+          </div>
           <div class="sto-address">
             <span class="sto-address-label">Адрес</span>
             <span>Космонавтов, 16<br>Советский район</span>
+          </div>
+          <div class="sto-brands">
+            <span class="brand-tag">Все марки</span>
           </div>
           <div class="sto-tags">
             <span class="sto-tag">Шиномонтаж</span>
@@ -989,31 +1181,59 @@
         </div>
       </article>
 
-      <article class="sto-card" data-district="zheleznodor" data-service="to,engine" data-brand="korean,japanese" data-rating="4.6">
+      <article class="sto-card"
+        data-district="zheleznodor" data-service="to,engine"
+        data-brand="korean,japanese" data-rating="4.6" data-reviews="67"
+        data-experience="9" data-price="mid" data-verified="false" data-photo="true" data-open="true">
         <div class="sto-gallery">
           <div class="sto-photo main"><div class="sto-photo-num">13</div></div>
           <div class="sto-photo"><div class="sto-photo-num">14</div></div>
           <div class="sto-photo"><div class="sto-photo-num">15</div></div>
-          <div class="sto-badge">Проверено</div>
-          <div class="sto-photo-counter">+2 фото</div>
+          <div class="sto-badges">
+            <span class="badge badge-new">Новое</span>
+          </div>
+          <div class="sto-photo-counter">+2</div>
         </div>
         <div class="sto-body">
           <div>
             <h3 class="sto-name">Азиатский АвтоСервис</h3>
-            <div class="sto-category">Kia, Hyundai, Toyota, Nissan</div>
+            <div class="sto-category">Kia, Hyundai, Toyota</div>
             <div class="sto-rating">
               <span class="sto-stars">★★★★☆</span>
               <span class="sto-score">4.6</span>
               <span class="sto-reviews">67 отзывов</span>
             </div>
           </div>
+          <div class="sto-info-grid">
+            <div class="sto-info-item">
+              <span class="sto-info-label">Опыт</span>
+              <span class="sto-info-value">9 лет</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Сегодня</span>
+              <span class="sto-info-value open-now">До 19:00</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Цены</span>
+              <span class="sto-info-value">Средние</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Скидки</span>
+              <span class="sto-info-value">Постоянным</span>
+            </div>
+          </div>
           <div class="sto-address">
             <span class="sto-address-label">Адрес</span>
             <span>Дорожная, 8<br>Железнодорожный район</span>
           </div>
+          <div class="sto-brands">
+            <span class="brand-tag">Kia</span>
+            <span class="brand-tag">Hyundai</span>
+            <span class="brand-tag">Toyota</span>
+          </div>
           <div class="sto-tags">
             <span class="sto-tag">ТО</span>
-            <span class="sto-tag">Ремонт двигателя</span>
+            <span class="sto-tag">Двигатель</span>
             <span class="sto-tag">Запчасти</span>
           </div>
           <div class="sto-actions">
@@ -1023,33 +1243,61 @@
         </div>
       </article>
 
-      <article class="sto-card" data-district="levoberezh" data-service="to,diagnostics,engine" data-brand="russian" data-rating="4.4">
+      <article class="sto-card"
+        data-district="levoberezh" data-service="to,diagnostics,engine"
+        data-brand="russian" data-rating="4.4" data-reviews="112" data-experience="22"
+        data-price="low" data-verified="true" data-photo="true" data-open="false">
         <div class="sto-gallery">
           <div class="sto-photo main"><div class="sto-photo-num">16</div></div>
           <div class="sto-photo"><div class="sto-photo-num">17</div></div>
           <div class="sto-photo"><div class="sto-photo-num">18</div></div>
-          <div class="sto-badge">Проверено</div>
-          <div class="sto-photo-counter">+7 фото</div>
+          <div class="sto-badges">
+            <span class="badge badge-verified">Проверено</span>
+          </div>
+          <div class="sto-photo-counter">+7</div>
         </div>
         <div class="sto-body">
           <div>
-            <h3 class="sto-name">Гараж на Левом берегу</h3>
-            <div class="sto-category">Ремонт отечественных авто</div>
+            <h3 class="sto-name">Гараж на Левом</h3>
+            <div class="sto-category">Ремонт отечественных</div>
             <div class="sto-rating">
               <span class="sto-stars">★★★★☆</span>
               <span class="sto-score">4.4</span>
               <span class="sto-reviews">112 отзывов</span>
             </div>
           </div>
+          <div class="sto-info-grid">
+            <div class="sto-info-item">
+              <span class="sto-info-label">Опыт</span>
+              <span class="sto-info-value">22 года</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Сегодня</span>
+              <span class="sto-info-value closed">Завтра 8:00</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Цены</span>
+              <span class="sto-info-value">Экономные</span>
+            </div>
+            <div class="sto-info-item">
+              <span class="sto-info-label">Марки</span>
+              <span class="sto-info-value">Lada, ГАЗ</span>
+            </div>
+          </div>
           <div class="sto-address">
             <span class="sto-address-label">Адрес</span>
             <span>Волгодонская, 2<br>Левобережный район</span>
           </div>
+          <div class="sto-brands">
+            <span class="brand-tag">Lada</span>
+            <span class="brand-tag">ГАЗ</span>
+            <span class="brand-tag">УАЗ</span>
+          </div>
           <div class="sto-tags">
             <span class="sto-tag">ТО</span>
             <span class="sto-tag">Диагностика</span>
-            <span class="sto-tag">Ремонт двигателя</span>
-            <span class="sto-tag more">+6 услуг</span>
+            <span class="sto-tag">Двигатель</span>
+            <span class="sto-tag more">+6</span>
           </div>
           <div class="sto-actions">
             <button class="sto-btn sto-btn-primary">Позвонить</button>
@@ -1061,72 +1309,31 @@
     </div>
   </div>
 
-  <!-- CTA ДЛЯ СТО -->
+  <!-- CTA -->
   <div class="cta">
     <div class="cta-inner">
       <div class="cta-left">
         <div class="cta-label">Владельцам автосервисов</div>
         <h2 class="cta-title">Разместите своё СТО в каталоге</h2>
-        <p class="cta-text">Первый месяц — бесплатно. Дальше по желанию — от 3 000 ₽ в год. Без обязательств и скрытых платежей.</p>
+        <p class="cta-text">Первый месяц — бесплатно. Дальше по желанию — от 3 000 ₽ в год.</p>
       </div>
       <a href="#pricing" class="cta-btn">Добавить сервис</a>
     </div>
   </div>
-
-  <!-- ТАРИФЫ -->
-  <section class="pricing" id="pricing">
-    <div class="pricing-header">
-      <div class="pricing-label">Тарифы для СТО</div>
-      <h2 class="pricing-title">Размещение в каталоге</h2>
-      <p class="pricing-sub">Платите только если видите результат. Первый месяц — бесплатно.</p>
-    </div>
-
-    <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-tier">Базовый</div>
-        <h3 class="pricing-name">Старт</h3>
-        <p class="pricing-desc">Попробовать без риска — разместиться и посмотреть.</p>
-        <div class="pricing-amount">0 ₽</div>
-        <div class="pricing-period">первый месяц · затем 3 000 ₽ / год</div>
-        <ul class="pricing-list">
-          <li>Карточка СТО в каталоге Воронежа</li>
-          <li>Адрес, телефон, услуги</li>
-          <li>3 фото в галерее</li>
-          <li>Статистика показов в кабинете</li>
-        </ul>
-        <a href="#" class="pricing-btn outline">Попробовать</a>
-      </div>
-
-      <div class="pricing-card featured">
-        <div class="pricing-tier">Профессиональный</div>
-        <h3 class="pricing-name">Профи</h3>
-        <p class="pricing-desc">Больше клиентов — позиция в топе и расширенная витрина.</p>
-        <div class="pricing-amount">от 10 000 ₽</div>
-        <div class="pricing-period">в год · по вашему району и услуге</div>
-        <ul class="pricing-list">
-          <li>Всё из тарифа «Старт»</li>
-          <li>Позиция в топе каталога</li>
-          <li>Бейдж «Проверено» и выделение</li>
-          <li>До 15 фото в галерее</li>
-          <li>Расширенная статистика: клики и звонки</li>
-        </ul>
-        <a href="#" class="pricing-btn primary">Подключить Профи</a>
-      </div>
-    </div>
-  </section>
 
   <!-- ПОДВАЛ -->
   <footer class="footer">
     <div class="footer-inner">
       <div>
         <div class="footer-brand-name">АвтоСервисы Воронежа</div>
-        <p class="footer-brand-text">Каталог СТО с ценами, отзывами и адресами. Помогаем найти надёжный автосервис рядом с домом.</p>
+        <p class="footer-brand-text">Каталог СТО с ценами, отзывами и адресами.</p>
+        <a href="tel:+74732000000" class="footer-phone">+7 (473) 200-00-00</a>
       </div>
       <div>
         <div class="footer-heading">Каталог</div>
         <ul class="footer-list">
           <li><a href="#">Все СТО</a></li>
-          <li><a href="#">Кузовной ремонт</a></li>
+          <li><a href="#">Кузовной</a></li>
           <li><a href="#">Шиномонтаж</a></li>
           <li><a href="#">Диагностика</a></li>
         </ul>
@@ -1141,10 +1348,18 @@
         </ul>
       </div>
       <div>
+        <div class="footer-heading">Марки</div>
+        <ul class="footer-list">
+          <li><a href="#">Немецкие</a></li>
+          <li><a href="#">Корейские</a></li>
+          <li><a href="#">Японские</a></li>
+          <li><a href="#">Российские</a></li>
+        </ul>
+      </div>
+      <div>
         <div class="footer-heading">Сервис</div>
         <ul class="footer-list">
           <li><a href="#">Для СТО</a></li>
-          <li><a href="#">Размещение</a></li>
           <li><a href="#">Контакты</a></li>
           <li><a href="#">Политика ПДн</a></li>
         </ul>
@@ -1172,59 +1387,151 @@
       });
     }
 
-    const chips = document.querySelectorAll('.chip');
-    const serviceFilter = document.getElementById('serviceFilter');
-    const brandFilter = document.getElementById('brandFilter');
-    const ratingFilter = document.getElementById('ratingFilter');
-    const searchInput = document.getElementById('searchInput');
-    const searchBtn = document.getElementById('searchBtn');
-    const cards = document.querySelectorAll('.sto-card');
-    const resultsCount = document.getElementById('resultsCount');
+    const filtersToggle = document.getElementById('filtersToggle');
+    const filtersBody = document.getElementById('filtersBody');
+    const filtersBadge = document.getElementById('filtersBadge');
 
-    let activeDistrict = 'all';
-
-    function applyFilters() {
-      const service = serviceFilter.value;
-      const brand = brandFilter.value;
-      const rating = ratingFilter.value;
-      const query = searchInput.value.trim().toLowerCase();
-      let visible = 0;
-
-      cards.forEach(card => {
-        const district = card.dataset.district;
-        const services = (card.dataset.service || '').split(',');
-        const brands = (card.dataset.brand || '').split(',');
-        const cardRating = parseFloat(card.dataset.rating);
-        const text = card.innerText.toLowerCase();
-
-        let ok = true;
-        if (activeDistrict !== 'all' && district !== activeDistrict) ok = false;
-        if (service && !services.includes(service)) ok = false;
-        if (brand && !brands.includes(brand)) ok = false;
-        if (rating && cardRating < parseFloat(rating)) ok = false;
-        if (query && !text.includes(query)) ok = false;
-
-        card.style.display = ok ? '' : 'none';
-        if (ok) visible++;
+    if (filtersToggle && filtersBody) {
+      filtersToggle.addEventListener('click', () => {
+        filtersBody.classList.toggle('open');
       });
-
-      resultsCount.textContent = visible;
     }
 
-    chips.forEach(chip => {
+    let activeDistrict = 'all';
+    const activeServices = new Set();
+    const activeBrands = new Set();
+
+    document.querySelectorAll('#districtsChips .chip').forEach(chip => {
       chip.addEventListener('click', () => {
-        chips.forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('#districtsChips .chip').forEach(c => c.classList.remove('active'));
         chip.classList.add('active');
         activeDistrict = chip.dataset.district;
         applyFilters();
       });
     });
 
-    serviceFilter.addEventListener('change', applyFilters);
-    brandFilter.addEventListener('change', applyFilters);
+    document.querySelectorAll('.chip[data-service]').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const s = chip.dataset.service;
+        if (activeServices.has(s)) { activeServices.delete(s); chip.classList.remove('active'); }
+        else { activeServices.add(s); chip.classList.add('active'); }
+        applyFilters();
+      });
+    });
+
+    document.querySelectorAll('.chip[data-brand]').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const b = chip.dataset.brand;
+        if (activeBrands.has(b)) { activeBrands.delete(b); chip.classList.remove('active'); }
+        else { activeBrands.add(b); chip.classList.add('active'); }
+        applyFilters();
+      });
+    });
+
+    const openNow = document.getElementById('openNow');
+    const verifiedOnly = document.getElementById('verifiedOnly');
+    const withPhoto = document.getElementById('withPhoto');
+    const ratingFilter = document.getElementById('ratingFilter');
+    const priceFilter = document.getElementById('priceFilter');
+    const experienceFilter = document.getElementById('experienceFilter');
+    const sortFilter = document.getElementById('sortFilter');
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const resultsCount = document.getElementById('resultsCount');
+    const grid = document.getElementById('stoGrid');
+
+    function updateBadge() {
+      let count = 0;
+      if (activeDistrict !== 'all') count++;
+      count += activeServices.size;
+      count += activeBrands.size;
+      if (openNow.checked) count++;
+      if (verifiedOnly.checked) count++;
+      if (withPhoto.checked) count++;
+      if (ratingFilter.value) count++;
+      if (priceFilter.value) count++;
+      if (experienceFilter.value) count++;
+      filtersBadge.textContent = count;
+      filtersBadge.style.display = count > 0 ? 'inline-block' : 'none';
+    }
+
+    function applyFilters() {
+      const rating = ratingFilter.value ? parseFloat(ratingFilter.value) : 0;
+      const price = priceFilter.value;
+      const exp = experienceFilter.value ? parseInt(experienceFilter.value) : 0;
+      const query = searchInput.value.trim().toLowerCase();
+
+      let visible = 0;
+      const cards = Array.from(grid.querySelectorAll('.sto-card'));
+
+      cards.forEach(card => {
+        const district = card.dataset.district;
+        const services = (card.dataset.service || '').split(',');
+        const brands = (card.dataset.brand || '').split(',');
+        const cardRating = parseFloat(card.dataset.rating);
+        const cardExp = parseInt(card.dataset.experience);
+        const cardPrice = card.dataset.price;
+        const isVerified = card.dataset.verified === 'true';
+        const hasPhoto = card.dataset.photo === 'true';
+        const isOpen = card.dataset.open === 'true';
+        const text = card.innerText.toLowerCase();
+
+        let ok = true;
+        if (activeDistrict !== 'all' && district !== activeDistrict) ok = false;
+        if (activeServices.size && !services.some(s => activeServices.has(s))) ok = false;
+        if (activeBrands.size && !brands.some(b => activeBrands.has(b))) ok = false;
+        if (rating && cardRating < rating) ok = false;
+        if (price && cardPrice !== price) ok = false;
+        if (exp && cardExp < exp) ok = false;
+        if (openNow.checked && !isOpen) ok = false;
+        if (verifiedOnly.checked && !isVerified) ok = false;
+        if (withPhoto.checked && !hasPhoto) ok = false;
+        if (query && !text.includes(query)) ok = false;
+
+        card.style.display = ok ? '' : 'none';
+        if (ok) visible++;
+      });
+
+      const sort = sortFilter.value;
+      cards.sort((a, b) => {
+        if (sort === 'rating') return parseFloat(b.dataset.rating) - parseFloat(a.dataset.rating);
+        if (sort === 'reviews') return parseInt(b.dataset.reviews) - parseInt(a.dataset.reviews);
+        if (sort === 'experience') return parseInt(b.dataset.experience) - parseInt(a.dataset.experience);
+        return 0;
+      });
+      cards.forEach(c => grid.appendChild(c));
+
+      resultsCount.textContent = visible;
+      updateBadge();
+    }
+
+    openNow.addEventListener('change', applyFilters);
+    verifiedOnly.addEventListener('change', applyFilters);
+    withPhoto.addEventListener('change', applyFilters);
     ratingFilter.addEventListener('change', applyFilters);
+    priceFilter.addEventListener('change', applyFilters);
+    experienceFilter.addEventListener('change', applyFilters);
+    sortFilter.addEventListener('change', applyFilters);
     searchBtn.addEventListener('click', applyFilters);
     searchInput.addEventListener('input', applyFilters);
+
+    resetBtn.addEventListener('click', () => {
+      activeDistrict = 'all';
+      activeServices.clear();
+      activeBrands.clear();
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      document.querySelector('#districtsChips .chip[data-district="all"]').classList.add('active');
+      openNow.checked = false;
+      verifiedOnly.checked = false;
+      withPhoto.checked = false;
+      ratingFilter.value = '';
+      priceFilter.value = '';
+      experienceFilter.value = '';
+      sortFilter.value = 'rating';
+      searchInput.value = '';
+      applyFilters();
+    });
 
     document.querySelectorAll('.sto-btn-primary').forEach(b => {
       b.addEventListener('click', () => alert('Позвонить в СТО'));
@@ -1232,6 +1539,8 @@
     document.querySelectorAll('.sto-btn-secondary').forEach(b => {
       b.addEventListener('click', () => alert('Открыть на Яндекс.Картах'));
     });
+
+    updateBadge();
   </script>
 
 </body>
